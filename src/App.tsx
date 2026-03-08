@@ -85,7 +85,7 @@ export default function App() {
       <nav className="fixed top-0 w-full z-50 bg-rose-50/80 backdrop-blur-md border-b border-rose-100">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="font-serif text-2xl font-semibold text-sage-700 tracking-tight">
-            Audrey Huault <span className="text-rose-400">RESET</span>
+            Audrey Huault - <span className="text-rose-400">Programme RESET</span>
           </div>
           <a 
             href="#pack" 
@@ -371,7 +371,7 @@ export default function App() {
       <footer className="bg-sage-900 text-rose-50 py-20 px-6">
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 mb-16">
           <div>
-            <div className="font-serif text-3xl font-semibold mb-6">Audrey Huault <span className="text-rose-400">RESET</span></div>
+            <div className="font-serif text-3xl font-semibold mb-6">Audrey Huault - <span className="text-rose-400">Programme RESET</span></div>
             <p className="opacity-60 leading-relaxed">
               Accompagnement par l'hypnose pour une vie plus légère et pleine de sens.
             </p>

@@ -1,13 +1,447 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Audrey Huault - Programme RESET</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                    },
+                    colors: {
+                        sage: {
+                            50: '#f4f5f2',
+                            100: '#e9ebe5',
+                            200: '#d3d7cb',
+                            300: '#bdc3b1',
+                            400: '#a7af97',
+                            500: '#919b7d',
+                            600: '#77815c',
+                            700: '#5d6548',
+                            800: '#434934',
+                            900: '#292d20',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal {
+            position: relative;
+            opacity: 0;
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-rose-50 font-sans text-sage-900 selection:bg-rose-200 selection:text-sage-900 overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-rose-50/80 backdrop-blur-md border-b border-rose-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="font-serif text-2xl font-semibold text-sage-700 tracking-tight">
+                Audrey Huault - <span class="text-rose-400">Programme RESET</span>
+            </div>
+            <a href="#pack" class="hidden md:block bg-sage-600 text-white px-6 py-2 rounded-full font-medium hover:bg-sage-700 transition-all hover:shadow-lg hover:shadow-sage-200">
+                Découvrir le programme
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-rose-200/30 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-sage-100/40 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="fade-in">
+                <h1 class="font-serif text-5xl md:text-7xl leading-[1.1] text-sage-800 mb-6">
+                    Allégez votre passé pour retrouver le <span class="italic text-rose-400">sens</span> de votre vie.
+                </h1>
+                <p class="text-xl text-sage-700 mb-10 leading-relaxed max-w-lg">
+                    Le programme RESET : Une approche douce et profonde par l'hypnose pour poser enfin ce sac à dos émotionnel qui vous freine.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#pack" class="bg-sage-600 text-white px-8 py-4 rounded-full text-lg font-semibold flex items-center justify-center gap-2 hover:bg-sage-700 transition-all shadow-xl shadow-sage-200 group">
+                        Commencer ma transformation <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="fade-in" style="transition-delay: 200ms;">
+                <div class="relative">
+                    <div class="aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl border-8 border-white/50">
+                        <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=80&w=1000" alt="Sérénité et nature" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl max-w-[200px] border border-rose-50">
+                        <i data-lucide="sparkles" class="w-8 h-8 text-rose-400 mb-2"></i>
+                        <p class="text-sm font-medium text-sage-800 italic">"La douceur est la plus grande des forces."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Problèmes -->
+    <section class="py-20 px-6 md:px-12 lg:px-24 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-serif text-4xl md:text-5xl text-sage-800 mb-4">Ce sac à dos que vous portez...</h2>
+                <p class="text-sage-600 max-w-2xl mx-auto text-lg">Il est temps de regarder ce qui pèse et de s'autoriser à le poser.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="p-8 rounded-3xl bg-rose-50/50 border border-rose-100 hover:bg-rose-50 transition-colors h-full fade-in" style="transition-delay: 100ms;">
+                    <i data-lucide="cloud-rain" class="w-10 h-10 text-rose-400 mb-6"></i>
+                    <h3 class="font-serif text-2xl text-sage-800 mb-3">Poids émotionnel</h3>
+                    <p class="text-sage-600 leading-relaxed">Des souvenirs ou des émotions qui reviennent sans cesse vous envahir.</p>
+                </div>
+                <div class="p-8 rounded-3xl bg-rose-50/50 border border-rose-100 hover:bg-rose-50 transition-colors h-full fade-in" style="transition-delay: 200ms;">
+                    <i data-lucide="anchor" class="w-10 h-10 text-rose-400 mb-6"></i>
+                    <h3 class="font-serif text-2xl text-sage-800 mb-3">Blocages invisibles</h3>
+                    <p class="text-sage-600 leading-relaxed">Cette sensation de faire du surplace malgré tous vos efforts conscients.</p>
+                </div>
+                <div class="p-8 rounded-3xl bg-rose-50/50 border border-rose-100 hover:bg-rose-50 transition-colors h-full fade-in" style="transition-delay: 300ms;">
+                    <i data-lucide="wind" class="w-10 h-10 text-rose-400 mb-6"></i>
+                    <h3 class="font-serif text-2xl text-sage-800 mb-3">Fatigue mentale</h3>
+                    <p class="text-sage-600 leading-relaxed">Un mental qui tourne en boucle, épuisé par le stress et l'anxiété.</p>
+                </div>
+                <div class="p-8 rounded-3xl bg-rose-50/50 border border-rose-100 hover:bg-rose-50 transition-colors h-full fade-in" style="transition-delay: 400ms;">
+                    <i data-lucide="shield-check" class="w-10 h-10 text-rose-400 mb-6"></i>
+                    <h3 class="font-serif text-2xl text-sage-800 mb-3">Manque de sens</h3>
+                    <p class="text-sage-600 leading-relaxed">L'impression d'avoir perdu le fil de ce qui vous anime vraiment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transition Empathique -->
+    <section class="bg-sage-600 py-24 px-6 text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent"></div>
+        </div>
+        <div class="max-w-3xl mx-auto relative z-10 fade-in">
+            <i data-lucide="heart" class="w-12 h-12 text-rose-200 mx-auto mb-8 animate-pulse"></i>
+            <p class="font-serif text-3xl md:text-4xl text-rose-50 leading-relaxed italic">
+                "Vous n'êtes pas brisée. Vous avez simplement besoin d'un espace de sécurité pour laisser votre esprit se réinitialiser."
+            </p>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="py-20 px-6 md:px-12 lg:px-24">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div class="fade-in">
+                <div class="relative">
+                    <div class="aspect-square rounded-full overflow-hidden border-8 border-white shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1499209974431-9ddd3e6f9405?auto=format&fit=crop&q=80&w=1000" alt="Hypnose et calme" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute top-0 right-0 bg-rose-100 p-4 rounded-full shadow-lg">
+                        <i data-lucide="leaf" class="w-6 h-6 text-sage-600"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="fade-in" style="transition-delay: 200ms;">
+                <h2 class="font-serif text-4xl md:text-5xl text-sage-800 mb-6">Le Programme RESET</h2>
+                <p class="text-lg text-sage-700 mb-6 leading-relaxed">
+                    L'hypnose n'est pas une perte de contrôle, c'est au contraire une reconnexion profonde avec vos propres ressources. 
+                </p>
+                <p class="text-lg text-sage-700 mb-8 leading-relaxed">
+                    Le programme RESET a été conçu pour vous accompagner pas à pas, avec une douceur infinie, vers la libération de vos vieux schémas. C'est un voyage intérieur sécurisé où chaque séance est une pierre posée sur le chemin de votre renouveau.
+                </p>
+                <ul class="space-y-4">
+                    <li class="flex items-center gap-3 text-sage-800 font-medium">
+                        <i data-lucide="check-circle-2" class="w-6 h-6 text-rose-400"></i> Approche personnalisée
+                    </li>
+                    <li class="flex items-center gap-3 text-sage-800 font-medium">
+                        <i data-lucide="check-circle-2" class="w-6 h-6 text-rose-400"></i> Sécurité émotionnelle garantie
+                    </li>
+                    <li class="flex items-center gap-3 text-sage-800 font-medium">
+                        <i data-lucide="check-circle-2" class="w-6 h-6 text-rose-400"></i> Résultats durables et profonds
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bénéfices -->
+    <section class="py-20 px-6 md:px-12 lg:px-24 bg-sage-100/30">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-serif text-4xl md:text-5xl text-sage-800 mb-4">Ce qui vous attend après...</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all text-center border border-sage-200/50 group fade-in" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="wind" class="w-8 h-8 text-sage-600"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl text-sage-800">Légèreté</h3>
+                </div>
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all text-center border border-sage-200/50 group fade-in" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 bg-rose-50 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="sparkles" class="w-8 h-8 text-sage-600"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl text-sage-800">Liberté</h3>
+                </div>
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all text-center border border-sage-200/50 group fade-in" style="transition-delay: 300ms;">
+                    <div class="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="sun" class="w-8 h-8 text-sage-600"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl text-sage-800">Joie</h3>
+                </div>
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all text-center border border-sage-200/50 group fade-in" style="transition-delay: 400ms;">
+                    <div class="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="leaf" class="w-8 h-8 text-sage-600"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl text-sage-800">Sens</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Détails du Pack -->
+    <section id="pack" class="py-20 px-6 md:px-12 lg:px-24">
+        <div class="max-w-6xl mx-auto bg-white rounded-[3rem] shadow-2xl overflow-hidden border border-rose-100 fade-in">
+            <div class="grid md:grid-cols-2">
+                <div class="p-12 md:p-20 bg-rose-50/30">
+                    <h2 class="font-serif text-4xl text-sage-800 mb-8">Le contenu de votre accompagnement</h2>
+                    <div class="space-y-8">
+                        <div class="flex gap-6">
+                            <div class="flex-shrink-0 w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm">
+                                <i data-lucide="video" class="w-6 h-6 text-rose-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sage-800 mb-1">12 Séances en Visio</h4>
+                                <p class="text-sage-600">Un suivi hebdomadaire personnalisé de 1h pour travailler en profondeur.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="flex-shrink-0 w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm">
+                                <i data-lucide="headphones" class="w-6 h-6 text-rose-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sage-800 mb-1">2 Audios MP3 Personnalisés</h4>
+                                <p class="text-sage-600">Des séances d'auto-hypnose créées spécifiquement pour vos besoins.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="flex-shrink-0 w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm">
+                                <i data-lucide="message-circle" class="w-6 h-6 text-rose-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sage-800 mb-1">Suivi WhatsApp Illimité</h4>
+                                <p class="text-sage-600">Je reste à vos côtés entre les séances pour répondre à vos doutes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-12 md:p-20 flex flex-col justify-center items-center text-center">
+                    <div class="mb-8">
+                        <span class="text-rose-400 font-semibold tracking-widest uppercase text-sm">Investissement pour soi</span>
+                        <div class="mt-4 flex items-baseline justify-center gap-2">
+                            <span class="text-6xl font-serif text-sage-800">1247€</span>
+                        </div>
+                        <p class="text-sage-500 mt-2 italic">Possibilité de paiement en 3 fois</p>
+                    </div>
+                    <button class="w-full bg-sage-600 text-white px-8 py-5 rounded-full text-xl font-bold hover:bg-sage-700 transition-all shadow-xl shadow-sage-200 mb-6">
+                        Je réserve mon appel découverte
+                    </button>
+                    <p class="text-sm text-sage-500 flex items-center gap-2">
+                        <i data-lucide="shield-check" class="w-4 h-4"></i> Satisfait ou remboursé sous 14 jours
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- À propos -->
+    <section class="py-20 px-6 md:px-12 lg:px-24 bg-white">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div class="fade-in">
+                <div class="relative">
+                    <div class="aspect-[3/4] rounded-[3rem] overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=1000" alt="Audrey Huault - Hypnothérapeute" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-8 -right-8 bg-sage-600 text-white p-8 rounded-3xl shadow-xl max-w-[240px]">
+                        <p class="font-serif text-xl mb-2">Audrey Huault</p>
+                        <p class="text-sm opacity-80 leading-relaxed">Psychopraticienne spécialisée en hypnose ericksonienne, NMO issue de l'EMDR et énergétique chinoise.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="fade-in" style="transition-delay: 200ms;">
+                <h2 class="font-serif text-4xl md:text-5xl text-sage-800 mb-8">Ma mission : votre sécurité.</h2>
+                <div class="space-y-6 text-lg text-sage-700 leading-relaxed">
+                    <p>
+                        Depuis plus de 10 ans, j'accompagne des femmes et des hommes à retrouver leur boussole intérieure. Mon approche repose sur un pilier fondamental : la <strong>sécurité émotionnelle</strong>.
+                    </p>
+                    <p>
+                        On ne peut pas se libérer si l'on ne se sent pas en totale confiance. C'est pourquoi le programme RESET n'est pas une méthode "brutale" de changement, mais une éclosion douce, respectueuse de votre rythme et de votre histoire.
+                    </p>
+                    <p>
+                        Je suis là pour tenir la lampe pendant que vous explorez votre propre chemin.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20 px-6 md:px-12 lg:px-24 bg-rose-50/50">
+        <div class="max-w-3xl mx-auto fade-in">
+            <h2 class="font-serif text-4xl md:text-5xl text-sage-800 mb-12 text-center">Questions fréquentes</h2>
+            <div class="bg-white rounded-[2rem] p-8 md:p-12 shadow-sm border border-rose-100 space-y-2">
+                
+                <div class="faq-item border-b border-rose-100 last:border-0">
+                    <button class="faq-trigger w-full py-6 flex justify-between items-center text-left group">
+                        <span class="font-serif text-xl md:text-2xl text-sage-800 group-hover:text-sage-600 transition-colors">L'hypnose en visio est-elle aussi efficace ?</span>
+                        <i data-lucide="chevron-down" class="faq-icon w-6 h-6 text-rose-300 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden pb-6 text-sage-700 leading-relaxed">
+                        Absolument. L'hypnose repose sur la voix et la relation de confiance. Être dans le confort de votre propre foyer permet souvent une relaxation encore plus profonde et authentique.
+                    </div>
+                </div>
+
+                <div class="faq-item border-b border-rose-100 last:border-0">
+                    <button class="faq-trigger w-full py-6 flex justify-between items-center text-left group">
+                        <span class="font-serif text-xl md:text-2xl text-sage-800 group-hover:text-sage-600 transition-colors">Vais-je perdre le contrôle ?</span>
+                        <i data-lucide="chevron-down" class="faq-icon w-6 h-6 text-rose-300 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden pb-6 text-sage-700 leading-relaxed">
+                        C'est le mythe le plus courant ! En réalité, l'hypnose est un état de conscience augmentée. Vous entendez tout, vous pouvez parler, et vous ne ferez jamais rien qui aille à l'encontre de vos valeurs.
+                    </div>
+                </div>
+
+                <div class="faq-item border-b border-rose-100 last:border-0">
+                    <button class="faq-trigger w-full py-6 flex justify-between items-center text-left group">
+                        <span class="font-serif text-xl md:text-2xl text-sage-800 group-hover:text-sage-600 transition-colors">Et si je ne suis pas réceptive ?</span>
+                        <i data-lucide="chevron-down" class="faq-icon w-6 h-6 text-rose-300 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden pb-6 text-sage-700 leading-relaxed">
+                        Tout le monde est réceptif à l'hypnose, car c'est un état naturel que nous traversons tous plusieurs fois par jour (quand on est 'dans la lune'). Mon rôle est simplement de vous aider à retrouver cet état volontairement.
+                    </div>
+                </div>
+
+                <div class="faq-item border-b border-rose-100 last:border-0">
+                    <button class="faq-trigger w-full py-6 flex justify-between items-center text-left group">
+                        <span class="font-serif text-xl md:text-2xl text-sage-800 group-hover:text-sage-600 transition-colors">Comment se passe le paiement ?</span>
+                        <i data-lucide="chevron-down" class="faq-icon w-6 h-6 text-rose-300 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden pb-6 text-sage-700 leading-relaxed">
+                        Le paiement est sécurisé par Stripe. Vous pouvez régler en une fois ou choisir l'option en 3 mensualités pour plus de souplesse.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-sage-900 text-rose-50 py-20 px-6">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 mb-16">
+            <div>
+                <div class="font-serif text-3xl font-semibold mb-6">Audrey Huault - <span class="text-rose-400">Programme RESET</span></div>
+                <p class="opacity-60 leading-relaxed">
+                    Accompagnement par l'hypnose pour une vie plus légère et pleine de sens.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6 uppercase tracking-widest text-sm text-rose-400">Navigation</h4>
+                <ul class="space-y-4 opacity-80">
+                    <li><a href="#" class="hover:text-rose-400 transition-colors">Accueil</a></li>
+                    <li><a href="#pack" class="hover:text-rose-400 transition-colors">Le Programme</a></li>
+                    <li><a href="#" class="hover:text-rose-400 transition-colors">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6 uppercase tracking-widest text-sm text-rose-400">Légal</h4>
+                <ul class="space-y-4 opacity-80">
+                    <li><a href="#" class="hover:text-rose-400 transition-colors">Mentions Légales</a></li>
+                    <li><a href="#" class="hover:text-rose-400 transition-colors">CGV</a></li>
+                    <li><a href="#" class="hover:text-rose-400 transition-colors">Confidentialité</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto pt-8 border-t border-white/10 text-center opacity-40 text-sm">
+            &copy; <span id="year"></span> Audrey Huault Hypnothérapie. Tous droits réservés.
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // FAQ Toggle Logic
+        document.querySelectorAll('.faq-trigger').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('.faq-icon');
+                
+                // Toggle current
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+                
+                // Close others (optional)
+                document.querySelectorAll('.faq-content').forEach(otherContent => {
+                    if (otherContent !== content) {
+                        otherContent.classList.add('hidden');
+                        otherContent.previousElementSibling.querySelector('.faq-icon').classList.remove('rotate-180');
+                    }
+                });
+            });
+        });
+
+        // Scroll Animations (Intersection Observer)
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
